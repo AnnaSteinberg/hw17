@@ -17,5 +17,5 @@
     "PATCH/accounts"
   ],
   "timeWindowMs": 60000,
-  "requestLimit": 3
+  "logLevel": "info"
 }

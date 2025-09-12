@@ -1,6 +1,6 @@
 
 export type CrewShift = {
-    shift_id: number,
+    _id: number,
     startShift: number, //timestamp shift start time
     finishShift: number|null , //timestamp shift finish time
     table_num: string,

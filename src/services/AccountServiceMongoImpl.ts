@@ -25,7 +25,7 @@ class AccountServiceMongoImpl implements AccountService {
     }
 
     async getEmployeeById(id: string): Promise<Employee> {
-        const employee = await EmployeeModel.findById(id).exec();
+        const employee = await EmployeeModel.findById(id);
         if (!employee) throw new HttpError(404, `Employee with id ${id} not found`);
         return employee;
     }
@@ -55,5 +55,14 @@ class AccountServiceMongoImpl implements AccountService {
         throw "Not Implemented yet";
     }
 
+    async getAllEmployeesWithPagination(page: number, limit: number) {
+        const skip = (page - 1) * limit;
+
+        const employees = await Promise.all([
+            EmployeeModel.find().skip(skip).limit(limit),
+            EmployeeModel.countDocuments()
+        ]);
+        return employees;
+    }
 }
 export const accountServiceMongo = new AccountServiceMongoImpl();

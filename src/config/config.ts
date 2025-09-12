@@ -13,7 +13,8 @@ export interface Config {
         exp:string|number
     },
     timeWindowMs:number,
-    requestLimit:number
+    // requestLimit:number,
+    logLevel:string,
 }
 dotenv.config();
 
