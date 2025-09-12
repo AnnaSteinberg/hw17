@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/hw16.iml" filepath="$PROJECT_DIR$/.idea/hw16.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/time_control_project.iml" filepath="$PROJECT_DIR$/.idea/time_control_project.iml" />
     </modules>
   </component>
 </project>
