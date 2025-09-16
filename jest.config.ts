@@ -78,18 +78,18 @@ const config: Config = {
   // ],
 
   // An array of file extensions your modules use
-  // moduleFileExtensions: [
-  //   "js",
+  moduleFileExtensions: [
+    "js",
   //   "mjs",
   //   "cjs",
   //   "jsx",
-  //   "ts",
+    "ts",
   //   "mts",
   //   "cts",
   //   "tsx",
-  //   "json",
-  //   "node"
-  // ],
+    "json",
+    "node"
+  ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   moduleNameMapper: {
@@ -150,7 +150,7 @@ const config: Config = {
   // snapshotSerializers: [],
 
   // The tests environment that will be used for testing
-  testEnvironment: "jest-environment-node",
+  testEnvironment: "node",
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},

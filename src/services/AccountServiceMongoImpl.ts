@@ -19,9 +19,17 @@ class AccountServiceMongoImpl implements AccountService {
         return fired;
     }
 
+
     async getAllEmployees(): Promise<SavedFiredEmployee[]> {
-        const result = await EmployeeModel.find({}).exec();
-        return result as SavedFiredEmployee[]
+        const result = await EmployeeModel.find({}, {
+            _id: 1,
+            firstName: 1,
+            lastName: 1,
+            table_num: 1,
+            fireDate: 1
+        }).lean().exec();
+        if (!result) throw new HttpError(404, 'No employees found!');
+        return result
     }
 
     async getEmployeeById(id: string): Promise<Employee> {
@@ -51,8 +59,14 @@ class AccountServiceMongoImpl implements AccountService {
 
     }
 
-    updateEmployee(empId: string, employee: UpdateEmployeeDto): Promise<Employee> {
-        throw "Not Implemented yet";
+    async updateEmployee(_id: string, employee: UpdateEmployeeDto): Promise<Employee> {
+        // throw "Not Implemented yet";
+        const updated = await EmployeeModel.findByIdAndUpdate({_id}, {
+                $set: {firstName: employee.firstName, lastName: employee.lastName}
+            },
+            {new: true}).exec();
+        if (!updated) throw new HttpError(500, "Employee updating failed!");
+        return updated as Employee
     }
 
     async getAllEmployeesWithPagination(page: number, limit: number) {
